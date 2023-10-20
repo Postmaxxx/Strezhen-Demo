@@ -1,0 +1,52 @@
+@use '/src/assets/css/variables' as *;
+
+
+.fiber-params {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10%;
+    grid-auto-flow: dense;
+
+    @include respond-to(md) {
+        grid-template-columns: 1fr;
+
+    }
+
+    & > .param__container {
+        width: 100%;    
+        align-self: end;
+        
+        & > .param {
+            display: grid;
+            grid-template-columns: 155px 1fr auto;
+            align-items: end;
+            margin-top: 7px;
+            
+            @include respond-to(xs) {
+                grid-template-columns: 130px 1fr auto;
+            }
+
+
+    
+            & > span:nth-of-type(1) {
+                font-weight: 400;
+            }
+
+            & > span:nth-of-type(2) {
+                flex-grow: 1;
+                margin-left: 10px;
+                margin-right: 15px;
+                border-bottom: 1px dotted #FFF;
+                margin-bottom: 3px;
+                min-width: 20px;
+            }            
+            & > span:nth-of-type(3) {
+                font-weight: 600;
+                text-align: end;
+            }
+        }
+    }
+
+}
+

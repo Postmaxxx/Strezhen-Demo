@@ -1,0 +1,44 @@
+@use '/src/assets/css/variables' as *;
+
+
+.rating_money {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    
+    & > .rating_money__content {
+        width: 100%;    
+        position: relative;
+        display: flex;
+        gap: 5%;
+        aspect-ratio: 5;
+        justify-content: center;
+        align-items: center;
+
+        & > .img-cont {
+            height: 75%;
+            display: flex;
+            align-items: center;
+
+        }
+    }
+
+
+    & > .rating_money__legend {
+        display: none;
+        margin-top: 2px;
+        & > span {
+            color: var(--text);
+            font-weight: 700;
+            
+            & > span {
+                font-weight: 400;
+                font-size: .8em;
+                color: var(--text_mild);
+            }
+        }
+    }
+}

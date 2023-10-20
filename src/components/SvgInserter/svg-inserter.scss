@@ -1,0 +1,18 @@
+@use '/src/assets/css/variables' as *;
+
+
+
+.svg-icon {
+    transition: fill $transition-theme;
+
+    
+    &.pro {
+        fill: var(--svg_pro); 
+    }
+    
+    &.con {
+        fill: var(--svg_con); 
+    }
+
+}
+

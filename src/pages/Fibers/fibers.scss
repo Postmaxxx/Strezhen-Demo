@@ -1,0 +1,65 @@
+@use '/src/assets/css/variables' as *;
+
+.page_fibers {
+    background-color: var(--bg);
+    transition: background-color $transition-theme;
+	flex-grow: 1;
+	
+
+	& .block_text {
+		margin-top: 2rem;
+
+		& > p {
+			margin-top: 2rem !important;
+			
+			& > b {
+				font-weight: 800;
+				color: var(--main_em);
+			}
+		}
+		
+	}
+
+
+	& .fibers {
+		width: 100%;
+		margin-top: 70px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+		justify-content: center;
+		gap: 5%;
+
+		& > a {
+			width: 25%;
+			margin-bottom: 5%;
+			padding: 20px;
+			overflow: hidden;
+			border: 1px solid var(--main);
+			border-radius: $brad_md;
+
+			&:hover {
+				border-color: 1px solid var(--main_em);
+				transition: border $transition_fast;
+			}
+
+			@include respond-to(md) {
+				width: 30%;
+			}
+
+			@include respond-to(sm) {
+				width: 45%;
+			}
+			
+			@include respond-to(xs) {
+				margin-left: 10px;
+				margin-right: 10px;
+				padding: 15px;
+				margin-bottom: 50px;
+				width: 100%;
+			}
+		}
+	}
+		
+	
+}

@@ -1,0 +1,273 @@
+$xl: 1600px;
+$lg: 1241px;
+$md: 992px;
+$sm: 768px;
+$xs: 480px;
+
+$black: #000;
+$white: #FFF;
+$brad_xl: 15px;
+$brad_lg: 10px;
+$brad_md: 5px;
+$brad_sm: 3px;
+
+
+$transition_base: .5s;
+$transition_nav_style: .5s ease-in-out;
+$transition_nav: .5s;
+$transition_theme: 1s;
+$transition_fast: .2s;
+$transition_slow: .8s;
+$transition_subMenu: 0.3s;
+$header_height: 60px;
+$preloader_speed_w: 2s;
+$nav_mobile_delay: 0.3s;
+
+//$transition_nav: .5s ease-in-out;
+//$transition_nav-time: .5s;
+//$transition_base: .5s;
+//$transition-theme: 1s;
+//$transition_gallery: 0.2s ease-out;
+
+
+
+
+$color_input_error: #ffa0a0;
+
+$item_delete: red;
+
+$text_basic: #333;
+$text_selected: #EEE;
+$blue_light_1: #3D89B4;
+$bg: #F4EDDD;
+
+$light: #EBEBEB;
+$dark: #286181;
+$color_danger: rgb(224, 54, 54);
+$color_success: rgb(65, 156, 65);
+
+
+body {
+    --text_nav: #444;
+    --text_nav_selected: #FFF;
+    --bg: rgb(235, 235, 235);
+    --input_error: #ffa0a0;
+    --main: rgb(100, 181, 245);
+    --main_RGB: 100, 181, 245;
+    --main_em: rgb(7, 113, 184);
+    --main_em_RGB: 7, 113, 184;
+    --text: rgb(31, 40, 51);
+    --text_reverse: #EBEBEB;
+
+    --lang-selector: #EBEBEB;
+    --lang-text: #286181;
+    --lang-text_add: #0e4e70;
+    
+    --inputs-bg: #EBEBEB;
+
+    --error: rgb(209, 4, 4);
+
+    --svg_minus: rgb(235, 71, 71);
+    --svg_plus: rgb(66, 173, 73);
+    --svg_plus-minus: rgb(116, 116, 116);
+    --svg_pro: rgb(66, 173, 73);
+    --svg_con: rgb(255, 10, 0);
+    --svg_question: rgb(90, 90, 90);
+    --border_compare: rgb(163, 163, 163);
+    --rating_bg: rgb(196, 196, 196);
+    --rating_border_inner: rgb(37, 37, 37); 
+    --rating_value_blue: rgb(86, 174, 241);
+    --rating_value_green: rgb(67, 170, 55);
+    --rating_value_red: rgb(172, 113, 65);
+    --rating_value_lilac: rgb(115, 169, 192);
+    --compare_selected: rgb(207, 207, 207); 
+    --compare_mark: rgb(46, 46, 46);
+    --rating_money: rgb(185, 185, 53);
+
+    --cart_informer: #FFF;
+
+    --scroll_bg: rgb(235, 235, 235);
+    --scroll_handle: #818181;
+    --scroll_handle_active: #3f3f3f;
+
+    --contrast: #000;
+    --contrast_rev: #FFF;
+ }
+
+
+
+ body.dark {
+    --text_nav: #EEE;
+    --text_nav_selected: #222;
+    --bg: rgb(31, 40, 51);
+    --input_error: #ffa0a0;
+    --main: #0771b8;//rgb(13, 96, 173);
+    --main_RGB: 7, 113, 184;
+    --main_em: #64b5f5;    
+    --main_em_RGB: 100, 181, 245;
+    --text: rgb(233, 233, 233);
+    --text_reverse: #1F2833;
+    
+    --lang-selector: #EBEBEB;
+    --lang-text: #286181;
+    --lang-text_add: #EBEBEB;
+    
+    --inputs-bg: #d6e3e6;
+
+    --error: rgb(252, 221, 66);
+
+    --svg_minus: rgb(235, 71, 71);
+    --svg_plus: rgb(66, 173, 73);
+    --svg_plus-minus: rgb(163, 163, 163);
+    --svg_pro: rgb(66, 173, 73);
+    --svg_con: rgb(255, 10, 0);
+    --svg_question: rgb(163, 163, 163);
+    --border_compare: rgb(109, 109, 109);
+    --rating_bg: rgb(65, 65, 65);
+    --rating_border_inner: rgb(180, 180, 180);
+    --rating_value_blue: #0771b8;
+    --rating_value_green: rgb(43, 112, 36);
+    --rating_value_red: rgb(177, 86, 11);
+    --rating_value_lilac: rgb(48, 115, 146);
+    --compare_selected: rgb(52, 65, 80);
+    --compare_mark: rgb(218, 218, 218);
+    --rating_money: rgb(185, 185, 141);
+
+    --cart_informer: #222;
+
+    --scroll_bg: rgb(235, 235, 235);
+    --scroll_handle: #818181;
+    --scroll_handle_active: #3f3f3f;
+
+    --contrast: #FFF;
+    --contrast_rev: #000;
+}
+
+
+@mixin fs_base {
+    font-size: 1rem;
+    
+    @include respond-to(md) {
+        font-size: .9rem;
+    }
+
+    @include respond-to(sm) {
+        font-size: .9rem;
+    }
+    
+    @include respond-to(xs) {
+        font-size: .8rem;
+    }
+}
+
+
+@mixin fs_smaller {
+    font-size: .9rem;
+    
+    @include respond-to(md) {
+        font-size: .8rem;
+    }
+
+    @include respond-to(sm) {
+        font-size: .8rem;
+    }
+    
+    @include respond-to(xs) {
+        font-size: .7rem;
+    }
+}
+
+
+@mixin fs_bigger {
+    font-size: 1.2rem;
+    
+    @include respond-to(md) {
+        font-size: 1.1rem;
+    }
+
+    @include respond-to(sm) {
+        font-size: 1rem;
+    }
+    
+    @include respond-to(xs) {
+        font-size: .9rem;
+    }
+}
+
+
+ 
+@mixin scroll_thin {
+    &::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        border-radius: 3px;
+        background: var(--scroll_bg);
+    }
+      
+    &::-webkit-scrollbar-thumb {
+        border-radius: 3px;
+        background: var(--scroll_handle);
+    }
+      
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--scroll_handle_active);
+    }
+}
+
+
+
+@mixin scroll_hidden-wo-hover {
+    &:not(:hover)::-webkit-scrollbar {
+        width: 0px;
+        height: 0px;
+    }
+    
+    &:not(:hover)::-webkit-scrollbar-track {
+        background: transparent;
+    }
+      
+    &:not(:hover)::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+      
+    &:not(:hover)::-webkit-scrollbar-thumb:hover {
+        background: transparent;
+    }
+}
+
+
+@mixin margin_first_p {
+    margin-top: 2.2rem;
+                
+    @include respond-to(sm) {
+        margin-top: 1.8rem;
+    }
+
+    @include respond-to(xs) {
+        margin-top: 1.3rem;
+    }
+}
+
+
+
+@mixin  respond-to($width) {
+    @if $width == xs { 
+        @media (max-width: $xs) { @content } 
+    };
+    @if $width == sm { 
+        @media (max-width: $sm) { @content } 
+    };
+    @if $width == md { 
+        @media (max-width: $md) { @content } 
+    };
+    @if $width == lg { 
+        @media (max-width: $lg) { @content } 
+    };
+    @if $width == xl { 
+        @media (max-width: $xl) { @content } 
+    }
+}
+

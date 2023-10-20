@@ -1,0 +1,171 @@
+@use "/src/assets/css/variables" as *;
+
+$lang-width: 70px;
+$lang-height: 40px;
+$circle-multipher: 0.85;
+$blob-size_big: calc($lang-height * $circle-multipher);
+$blob-size_medium: calc($blob-size_big * 0.85);
+$blob-size_small: calc($blob-size_big * 0.70);
+$delta-big: calc(($lang-width - $blob-size_big - $lang-height + $blob-size_big) / 2);
+$delta-medium: calc(($lang-width - $blob-size_medium - $lang-height + $blob-size_medium) / 2);
+$delta-small: calc(($lang-width - $blob-size_small - $lang-height + $blob-size_small) / 2);
+$transition_lang: cubic-bezier(0.51, 0.06, 0.56, 1.37) .2s;
+
+
+.lang-switcher {
+    position: fixed;
+    cursor: pointer;
+    width: $lang-width;
+    height: $lang-height;
+    border-radius: 20px;
+    left: 20px;
+    top: 80px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: calc($lang-height - $blob-size_big);
+    padding-right: calc($lang-height - $blob-size_big);
+    align-items: center;
+    text-transform: uppercase;
+    background-color: var(--main);
+    font-weight: 700;
+    z-index: 5000;
+    transition: background-color $transition_theme, left $nav_mobile_delay, opacity $nav_mobile_delay;
+    & * {
+        -webkit-user-drag: none !important;
+        user-select: none !important;  
+    }
+    
+    @include respond-to(md) {
+        top: 75px;
+        transform: scale(0.85);
+    }
+    
+    @include respond-to(sm) {
+        transform: scale(0.70);
+        position: relative;
+        left: initial;
+        right: initial;
+        top: initial;
+    }
+    
+    @include respond-to(xs) {
+        transform: scale(0.6);
+    }
+    
+    &.scrolled {
+        left: -70px;
+
+        @include respond-to(sm) {
+            left: initial;
+        }
+    }
+    
+
+    
+
+
+    & > .lang-switcher__text {
+        z-index: 5600;
+        color: var(--lang-text);
+
+        font-weight: 800;
+        font-size: 14px;
+        width: $blob-size_medium;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &::before {
+            content: '';
+            border-radius: 50%;
+            background-color: var(--lang-selector);
+            position: absolute;
+            top: 50%;
+            transition: all $transition_lang;
+            z-index: -1;
+        }
+    }
+
+
+
+    &.ru{
+        z-index: 5750;
+
+        & > .lang_ru::before {
+            height: $blob-size_medium;
+            width: $blob-size_medium;
+            transform: translate(-50%, -50%);
+            left: calc(50% - $delta-medium);
+        }
+
+
+        & > .lang_en {
+            z-index: 5590;
+            color: var(--lang-text_add);
+            transition: color $transition_lang;
+            
+            &::before {
+                content: '';
+                border-radius: 50%;
+                height: $blob-size_big;
+                width: $blob-size_big;
+                transform: translate(-50%, -50%);
+                left: calc(50% - $delta-big);
+            }
+            
+            &:hover {
+                color: var(--lang-text);
+                &::before {
+                    background-color: #fff;
+                    left: calc(50% + $delta-small);
+                    height: $blob-size_small;
+                    width: $blob-size_small;
+                }
+            }
+        }
+    }
+
+
+    &.en{
+        z-index: 5750;
+
+        & > .lang_en::before {
+            height: $blob-size_medium;
+            width: $blob-size_medium;
+            transform: translate(-50%, -50%);
+            left: calc(50% + $delta-medium);
+        }
+
+
+        & > .lang_ru {
+            z-index: 5590;
+            color: var(--lang-text_add);
+            transition: color $transition_lang;
+
+
+            &::before {
+                height: $blob-size_big;
+                width: $blob-size_big;
+                transform: translate(-50%, -50%);
+                left: calc(50% + $delta-big);
+            }
+
+            &:hover {
+                color: var(--lang-text);
+                &::before {
+                    background-color: #fff;
+                    left: calc(50% - $delta-small);
+                    height: $blob-size_small;
+                    width: $blob-size_small;
+                }
+            }
+        }
+    }
+
+
+    &:focus {
+        left: 20px !important;
+    }
+
+}
+

@@ -1,0 +1,13 @@
+@use '/src/assets/css/variables' as *;
+
+.page_order {
+    background-color: var(--bg);
+    transition: background-color $transition-theme;
+    flex-grow: 1;
+
+    .files-adder {
+        margin-top: 0;
+    }
+
+}    
+

@@ -1,0 +1,25 @@
+@use '/src/assets/css/variables' as *;
+
+
+.homer {
+    width: 40px;
+    height: 40px;
+    background-color: var(--main_em);
+    position: fixed;
+    top: 100px;
+    right: 0;
+    transform: translateX(100%) rotate(180deg);
+    transition: transform $transition_fast, background-color $transition_theme;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    z-index: 2000;
+    opacity: 0.4;
+    cursor: pointer;
+
+    &.show {
+        transform: translateX(10%) rotate(180deg);
+        transition: transform $transition_fast $transition_fast, background-color $transition_theme;
+    }
+}

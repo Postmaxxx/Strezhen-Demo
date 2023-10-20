@@ -1,0 +1,199 @@
+@use "/src/assets/css/variables" as *;
+
+
+.product__info {
+    max-width: 60%;
+    padding: 0px 20px 30px 5%;
+
+    @include respond-to(sm) {
+        padding: 50px 0px 30px;
+        max-width: 100%;
+    }
+
+    & > h2 {
+        text-align: center;
+    }
+
+    & > .features {
+        display: flex;
+        flex-direction: column;
+
+        @include respond-to(sm) {
+            margin-top: 20px;
+        }
+        
+        & > .feature {
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+
+            @include respond-to(xs){
+                flex-direction: column;
+            }
+
+            & > .block_input {
+                padding-top: 0;
+            }
+
+            & > span, label, a {
+                @include fs_base;
+                
+                &:first-of-type {
+                    font-weight: 700;
+                }
+            }
+
+            & a {
+                text-decoration: underline !important;
+                color: var(--main_em);
+            }
+
+            & > span:nth-of-type(2) {
+                white-space: nowrap ;
+            }
+
+
+            & > p {
+                white-space:pre-wrap;
+                display: inline;
+                margin-top: 0;
+                text-indent: 0;
+                margin-top: 5px;
+            }
+
+            & .selector {
+                width: 70%;
+
+                @include respond-to(md) {
+                    width: 100%;
+                }
+
+                @include respond-to(xs) {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 10px;
+                }
+
+                & label {
+                    //margin-bottom: 0 !important;
+                    width: 95px;
+
+                    @include respond-to(md) {
+                        width: 85px;
+                    }
+
+                    @include respond-to(xs) {
+                        width: auto;
+                        margin-right: 0;
+                    }
+                }
+
+
+                & select {
+                    @include respond-to(xs) {
+                        margin-left: 0px;
+                        width: 100%;
+                        margin-top: 5px;
+                    }
+                    
+                }
+
+                .selector_color {
+                    margin-top: 5px;
+                }
+
+                &.incorrect-value::after {
+                    content: none;
+                }
+            }
+
+
+
+            &.wrap_xs {
+                @include respond-to(xs) {   
+                    & > label {
+                        text-align: center;
+                        display: flex;
+                        flex-direction: column;
+
+                        
+                    }
+                    & > select {
+                        margin-top: 5px;
+                        width: 100%;
+                    }
+                }
+            }
+
+
+            & .fiber__link {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+
+                & > .link-spacer {
+                    color: transparent;
+                }
+
+                & > a {
+                    display: block;
+                    margin-left: 10px;
+                    text-decoration: none !important;
+                    @include fs_smaller;
+    
+                    @include respond-to(xs) {
+                        margin-left: 0;
+                    }
+                }
+            }
+
+
+            &.text_simple {
+                display: block;
+            }
+        }
+
+
+
+        & > .colors__container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            @include respond-to(xs) {
+                margin-top: 10px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            & > span {
+                font-weight: 700;
+                margin-right: 10px;
+                margin-top: 10px;
+
+
+                @include respond-to(xs) {
+                    text-align: center;
+                }
+            }
+
+            & .colors__wrapper {
+                height: 40px;
+                margin-top: 10px;
+
+
+                @include respond-to(xs) {
+                    width: 100%;
+                }
+
+            }
+
+
+        }
+
+        
+    }
+
+
+}   

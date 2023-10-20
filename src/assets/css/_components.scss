@@ -1,0 +1,441 @@
+@use "./variables" as *;
+
+.button_link {
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.button_blue {
+    align-self: flex-start;
+    padding: 8px 50px;
+    border-radius: $brad_lg;
+    color: var(--text);
+    background-color: var(--main);
+    transition: background-color $transition_theme, color $transition_theme, box-shadow $transition_fast;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 5px; 
+    //min-height: 1rem;
+    justify-content: center;
+    @include fs_base;
+
+    @include respond-to(md) {
+        padding: 6px 40px;
+    }
+
+    @include respond-to(sm) {
+        padding: 6px 40px;
+    }
+
+    @include respond-to(xs) {
+        padding: 3px 20px;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 15px 0px var(--main);
+    }
+
+    &:disabled {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+
+    &.color_reverse {
+        color: var(--text_reverse);
+        background-color: var(--main_em);
+        
+        &:hover {
+            box-shadow: 0px 0px 15px 0px var(--main_em);
+        }
+    }
+}
+
+
+.button_light {
+    background-color: var(--inputs-bg);
+    color: $black;
+
+    &:hover {
+        box-shadow: 0px 0px 20px var(--inputs-bg)
+    }
+}
+
+
+
+
+.button_back {
+    padding: 8px 20px 8px 60px;
+
+    & > svg  {
+        max-height: 80%;
+        left: 0;
+        margin-left: 25px;
+        fill: var(--text);
+        position: absolute;
+        transition: margin .2s;
+        transform: rotate(180deg);
+    }
+
+    &:hover {
+        & > svg {
+            margin-left: 15px;
+        }
+    }
+}
+
+
+
+.block_input {
+    width: 100%;
+    position: relative;
+    padding-top: 15px;
+
+    /*&:first-child {
+        padding-top: 10px;
+    }*/
+
+    @include respond-to(sm) {
+        padding-top: 10px;
+    }
+
+    & > label {
+        display: block;
+        transition: color $transition_theme;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 3px;
+        @include fs_smaller;
+
+        
+        @include respond-to(sm) {
+            margin-bottom: 3px;
+        }
+
+        @include respond-to(xs) {
+            margin-bottom: 2px;
+        }
+    }
+
+
+    & > input, textarea, select {
+        font-size: 1.1rem;
+        width: 100%;
+        outline: none;
+        padding: 3px 7px;
+        background-color: var(--inputs-bg);
+        color: $black;
+        transition: background-color $transition_theme, border $transition_base;
+        border: 2px solid transparent;
+        border-radius: $brad_md;
+        font-weight: 500;
+
+        @include respond-to(sm) {
+            font-size: 1rem;
+            padding: 3px 5px;
+        }
+
+        @include respond-to(xs) {
+            font-size: .8rem;
+            padding: 2px 3px;
+            border-radius: $brad_sm;
+        }
+
+        &:focus{
+            outline: 2px solid var(--contrast);
+            @include respond-to(xs) {
+                outline: 1px solid var(--contrast);
+            }
+        }
+
+        & > option {
+            color: $black;
+        }
+    }
+
+    & > textarea {
+        min-height: 5rem;
+        resize: vertical;
+    }
+
+    &.incorrect-value {
+        &::after {
+            content: attr(data-error-text);
+            font-size: .8rem;
+            color: var(--text);
+            position: absolute;
+            top: calc(100%);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            
+            @include respond-to(sm) {
+                font-size: .6rem;
+            }
+
+            @include respond-to(xs) {
+                font-size: .5rem;
+            }
+        }
+    
+        & > input, textarea, select {
+            animation: inputshake $transition-fast ease-in-out 0s 2;
+            background-color: rgb(238, 167, 167) !important;
+        }
+    }
+
+    @keyframes inputshake {
+        0% { margin-left: 0rem; }
+        25% { margin-left: 0.5rem; }
+        75% { margin-left: -0.5rem; }
+        100% { margin-left: 0rem; }
+    }
+
+
+    &.expandable {
+        flex-grow: 1;
+
+        & textarea {
+            height: calc(100% - 22px); //textarea grows more than space for it
+        }
+    }
+
+
+    &_right {
+        justify-content: flex-end;
+    }
+}
+
+
+.form_full {
+    padding: 30px 40px 40px;
+    margin: 40px auto 0;
+    width: 85%;
+    border-radius: $brad_lg;
+    background-color: var(--main);
+    transition: background-color $transition_theme;
+    box-shadow: 5px 4px 6px 2px rgba(#000, 0.25);
+
+    @include respond-to(md) {
+        width: 90%;
+    }
+
+    @include respond-to(sm) {
+        padding: 50px 20px;
+        width: 100%;
+    }
+
+    @include respond-to(xs) {
+        padding: 50px 20px;
+    }
+
+
+    & section {
+        margin-top: 60px;
+    }
+
+    & .block_text  {
+        &:not(:first-child) {
+            margin-top: 60px;
+        }
+
+        & h2, h3 {
+            text-align: center;
+            color: var(--text);
+            font-family: Nunito;
+        }
+    }
+
+
+
+
+    & .form__inputs {
+        width: 100%;
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        //margin-top: 20px;
+        
+        
+        @include respond-to(sm) {
+            flex-direction: column;
+            //margin-top: 10px;
+        }
+        
+        @include respond-to(xs) {
+            //margin-top: 20px;
+        }
+
+        & .block_inputs_3 {
+            margin-top: 20px;
+        }
+    
+
+        & .form__inputs__texts {
+            width: 47%;
+            display: flex;
+            flex-direction: column;
+
+            
+            @include respond-to(sm) {
+                width: 100%;
+            }
+        }
+
+
+        & > .form__inputs__files {
+            width: 47%;
+            
+            @include respond-to(sm) {
+                width: 100%;
+            }
+            
+            & .block_input.files {
+                height: 100%;
+                display: flex;
+                flex-direction: column;   
+            }
+        }
+
+
+        & > .block_input {
+            width: 47%;
+            //border: 2px solid red;
+            display: flex;
+            align-items: stretch;
+            flex-direction: column;
+
+            & > textarea {
+                flex-grow: 1;
+            }
+        }
+
+
+
+        &_sm-wide {
+            @include respond-to(sm) {
+                flex-direction: row;
+            }
+            @include respond-to(xs) {
+                flex-direction: column;
+            }
+
+            & > .block_input {
+                @include respond-to(xs) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    & .files-adder, .picker, .cart {
+        margin-top: 20px;
+    }
+
+
+
+    & > button {
+        @extend .button_blue;
+        @extend .button_light;
+        margin-left: auto;
+        margin-top: 40px;
+            
+        @include respond-to(sm) {
+            margin-top: 30px;
+        }
+
+        @include respond-to(xs) {
+            width: 100%;
+            margin-top: 50px;
+            padding: 6px 20px;
+            width: 100%;
+        }
+    }
+
+}
+
+
+
+
+.block_inputs_3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+
+    & > .block_input {
+        width: 30%;
+
+        @include respond-to(sm) {
+            width: 47%;
+        }
+
+        @include respond-to(xs) {
+            width: 100%;
+        }
+    }
+}
+
+.block_inputs_4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+
+    & > .block_input {
+        width: 22%;
+
+        @include respond-to(md) {
+            width: 47%;
+        }
+
+        @include respond-to(sm) {
+            width: 47%;
+        }
+
+        @include respond-to(xs) {
+            width: 100%;
+        }
+    }
+}
+
+
+.block_inputs_mixed {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+
+    & > .block_input {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        width: 30%;
+
+        @include respond-to(sm) {
+            width: 47%;
+        }
+
+        @include respond-to(xs) {
+            width: 100%;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+

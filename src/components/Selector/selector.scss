@@ -1,0 +1,39 @@
+@use "/src/assets/css/variables" as *;
+
+
+.selector {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    
+    & > label {
+        margin-right: 10px;
+    }
+
+    & > select {
+        //background-color: var(--bg);
+        cursor: pointer;
+        flex-grow: 1;   
+        //width: fit-content;
+        width: 100%;
+        font-weight: 600;
+        border: 1px solid var(--main_em);
+        transition: border $transition_theme, background-color $transition_theme;
+        outline: none;
+        border-radius: $brad_md;
+        //padding: 5px 10px;
+        //@include fs_base;
+
+        //@include respond-to(md) {
+        //    padding: 5px 8px;
+        //}
+
+        & > option {
+            font-family: Nunito, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+    }
+    
+    
+}

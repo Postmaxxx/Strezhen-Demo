@@ -1,0 +1,60 @@
+@use "/src/assets/css/variables" as *;
+
+
+.page_product-details {
+    background-color: var(--bg);
+    transition: background-color 1s;
+    padding-bottom: 100px;
+
+    .product {
+        display: flex;
+        margin-top: 50px;
+        //border: 1px solid red;
+
+        @include respond-to(sm) {
+            flex-direction: column;
+        }
+
+        .product__images {
+            width: 40%;
+            aspect-ratio: 1.7;
+    
+            @include respond-to(md) {
+                width: 100%;
+            }
+    
+            @include respond-to(sm) {
+                aspect-ratio: initial;
+            }
+        }
+
+    }
+
+
+    & .buttons {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+
+        & .link_compareList {
+            width: fit-content;
+        }
+
+
+        & .button_edit {
+            margin-right: 20px;
+            height: 40px;
+            width: 45px;
+        }
+
+
+        & > .button_delete__container {
+            width: 30px;
+            height: 30px;
+            margin-left: 30px;
+        }
+    }
+
+}

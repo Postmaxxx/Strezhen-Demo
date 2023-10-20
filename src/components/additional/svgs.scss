@@ -1,0 +1,175 @@
+@use '/src/assets/css/variables' as *;
+
+
+.svg {
+    width: 100%;
+    height: 100%;
+    transition: fill $transition_theme;
+    fill: var(--text);
+
+}
+
+.icon_edit {
+    &:hover {
+        & path:nth-last-of-type(1) {
+            animation: pen-move 2s infinite;
+        }
+    }
+}
+
+.icon_delete {
+    top: 0;
+    left: 0;
+    position: absolute;
+    transition: transform $transition_fast,fill $transition_theme;
+}
+
+.icon_minus {
+    fill: var(--svg_minus); 
+}
+
+
+.icon_plus {
+    fill: var(--svg_plus); 
+}
+
+.icon_question {
+    fill: var(--svg_question); 
+}
+
+.icon_plus-minus {
+    fill: var(--svg_plus-minus); 
+}
+
+
+.icon_phone {
+    fill: var(--text);
+}
+
+
+.icon_email {
+    fill: var(--main_em);
+    circle {
+        transition: $transition_theme;
+    }
+
+    .st0 {
+        fill: var(--main_em);
+    }
+
+    .st2 {
+        fill: var(--main_em);
+    }
+
+    .st3 {
+        fill: var(--text_reverse);
+    }
+
+    .st4 {
+        fill: var(--bg);
+    }
+}
+
+
+.icon_money {
+    stroke: var(--rating_money);
+    filter: drop-shadow(0px 0px 3px var(--rating_money));
+    fill: none;
+
+    &.faded {
+        opacity: .4;
+    }
+}
+
+
+.icon_close {
+    fill: none;
+}
+
+
+
+.icon_homer {
+    fill: var(--text_reverse);
+}
+
+.icon_expand {
+    fill: $black;
+}
+
+
+.icon_expand_carousel > path {
+    fill: var(--main);
+    stroke: $black;
+    stroke-width: 5px;
+    stroke-dasharray: 2,2;
+    stroke-linejoin: round;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes pen-move {
+    /* 0% {
+         transform: translate(-5%, -10%);
+     }
+     10% {
+         transform: translate(-2%, -5%);
+     }
+     20% {
+         transform: translate(1%, -10%);
+     }
+     30% {
+         transform: translate(4%, -5%);
+     }
+     40% {
+         transform: translate(7%, -10%);
+     }
+     50% {
+         transform: translate(10%, -5%);
+     }
+     60% {
+         transform: translate(13%, -10%);
+     }
+     70% {
+         transform: translate(16%, -5%);
+     }
+     80% {
+         transform: translate(19%, -10%);
+     }
+     90% {
+         transform: translate(21%, -5%);
+     }*/
+ 
+ 
+ 
+ 
+    0% {
+        transform: translate(-5%, -20%);
+    }
+    15% {
+        transform: translate(20%, -20%);
+    }
+    30% {
+        transform: translate(-5%, -10%);
+    }
+    45% {
+        transform: translate(20%, -10%);
+    }
+    60% {
+        transform: translate(-5%, 0%);
+    }
+    75% {
+        transform: translate(20%, 0%);
+    }
+}
+

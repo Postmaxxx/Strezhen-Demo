@@ -1,0 +1,233 @@
+@use "sass:map";
+@use "./variables" as *;
+@use "./fonts" as *;
+@use "./components" as *;
+
+* {
+    font-family: 'Nunito', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: var(--text);
+    scroll-behavior: smooth;
+}
+
+
+body {
+    width: 100%;
+    @include scroll_thin;
+    &.noscroll {
+        overflow: hidden;
+    }
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    transition: color $transition_theme;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--main_em);
+
+    @include respond-to(sm) {
+        font-size: 1.8rem;
+    }
+
+    @include respond-to(xs) {
+        font-size: 1.5rem;
+    }
+}
+
+h2 {
+    font-size: 1.7rem;
+    transition: color $transition_theme;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--main_em);
+    text-align: center;
+
+    @include respond-to(sm) {
+        font-size: 1.4rem;
+    }
+
+    @include respond-to(xs) {
+        font-size: 1.3rem;
+    }
+}
+
+
+h3 {
+    font-size: 1.3rem;
+    transition: color $transition_theme;
+    color: var(--main_em);
+    text-align: center;
+    font-weight: 700;
+
+    @include respond-to(sm) {
+        font-size: 1.1rem;
+    }
+
+    @include respond-to(xs) {
+        font-size: 1rem;
+    }
+}
+
+
+
+label {
+    transition: color $transition_theme;
+    color: var(--text);
+}
+
+select {
+    background-color: var(--text_contrast);
+    color: var(--text);
+    transition: color $transition_theme, background-color $transition_theme;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+
+    & > li {
+        transition: color $transition_theme;
+        @include fs_base;
+    }
+} 
+
+
+a {
+    text-decoration: none;
+    color: var(--text);
+    transition: color $transition_theme;
+}
+
+sup {
+    transition: color $transition_theme;
+}
+
+p {
+    transition: color $transition_theme;
+    margin-top: .8rem;
+    text-indent: 2.5rem;
+    text-align: justify;
+    //font-weight: 500;
+    @include fs_base;
+    
+    @include respond-to(md) {
+        text-indent: 2.2rem;
+    }
+
+    @include respond-to(sm) {
+        text-indent: 2rem;
+    }
+    
+    @include respond-to(xs) {
+        text-indent: 1.7rem;
+    }
+
+}
+
+
+span {
+    transition: color $transition_theme;
+    font-weight: 500;
+    @include fs_base;
+}
+
+textarea {
+    @include fs_base;
+    @include scroll_thin;
+}
+
+.container_page {
+    width: 100%;
+    flex-grow: 1;
+    padding-top: 100px;
+    padding-bottom: 100px;
+
+    @include respond-to(sm) {
+        padding-top: 50px;
+        padding-bottom: 80px;
+    }
+
+    @include respond-to(xs) {
+        padding-bottom: 50px;
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: $lg;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    padding: 0 20px;
+    color: var(--text);
+
+    @include respond-to(xs) {
+        padding: 0 10px;
+    }
+}
+
+
+.block_text {
+    width: 80%;
+    max-width: 80ch;
+    margin-left: auto;
+    margin-right: auto;
+    //margin-top: 40px;
+    overflow-wrap: break-word;
+
+    @include respond-to(sm) {
+        width: 90%;
+    }
+
+    @include respond-to(xs) {
+        width: 100%;
+    }
+
+    & > p:first-of-type {
+        margin-top: 40px;
+    }
+}
+
+.no-display {
+    display: none !important;
+}
+
+
+.page {
+    background-color: var(--bg);
+    transition: background-color 1s;
+    flex-grow: 1;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+[data-selector=input-block] {
+    position: relative;
+}
+
+
+[data-selector=select] {
+    box-sizing: border-box;
+}   
+

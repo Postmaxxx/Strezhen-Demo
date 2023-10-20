@@ -1,0 +1,179 @@
+@use '/src/assets/css/variables' as *;
+
+
+.selector_color {
+    //margin-left: 10px;
+    outline: none;
+    height: 100%;
+    //width: 300px;
+    position: relative;
+    //min-width: 300px;
+    @include fs_base;
+    flex-grow: 1;
+
+    @include respond-to(xs) {
+        width: 100%;
+        //min-width: auto;
+    }
+
+    &::after {
+        box-sizing: border-box;
+        content: '';
+        border: 6px solid transparent;
+        border-top: 6px solid var(--main_em);
+        height: 12px;
+        width: 12px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(-50%, -25%);
+        pointer-events: none;
+        transition: border $transition_theme, transform $transition_fast;
+    }
+
+
+    & .color {
+        //height: 50px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--main);
+        background-color: var(--bg);
+        transition: background-color $transition_theme, border $transition_theme;
+        padding-right: 10px;
+
+        @include respond-to(xs) {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        
+        & .img-cont {
+            aspect-ratio: 4/3;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+
+            
+            & > img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            &:hover {
+                & > svg {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    margin-left: auto;
+                    height: 30px;
+                    width: 30px;
+                    flex-shrink: 0;
+                    /*& path {
+                        fill: var(--main_em);
+                    }*/
+                }
+
+            }
+        }
+        
+        
+        & > .color__name {
+            transition: color $transition_fast;
+            margin-right: 5px;
+
+            &:nth-of-type(2) {
+                font-weight: 400;
+                text-decoration: underline;
+                margin-left: 5px;
+                font-size: 0.7em;
+                margin-left: auto;
+                margin-right: 0;
+            }
+        }
+/*
+        & > svg {
+            margin-left: auto;
+            height: 30px;
+            width: 30px;
+            flex-shrink: 0;
+            & path {
+                fill: var(--main_em);
+            }
+        }*/
+
+
+        &:hover {
+            background-color: var(--main);
+            transition: background-color $transition_fast;
+            & > span {
+                color: var(--text);
+            }
+        }
+
+    }
+
+    & .current {
+        border: 1px solid var(--main_em);
+        height: 100%;
+        //width: 100%;
+        border-radius: 5px;
+        position: relative; 
+
+        & > .img-cont {
+            height: 26px;
+        }
+        
+        & > span {
+            @include fs_base;
+        }   
+
+    }
+
+
+
+    & > .list {
+        z-index: 1000;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        position: absolute;
+        border: 1px solid transparent;
+        border-top: none;
+        transition: max-height $transition_fast, border 0s $transition_fast;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    
+    
+    &.expanded {
+        & > .list {
+            /*position: absolute;
+            bottom: 100%;*/
+            max-height: none;
+            max-height: 300px;
+            overflow: auto;
+            border: 1px solid var(--main_em);
+            border-top: none;
+            transition: max-height $transition_fast, border 0s 0s;
+            @include scroll_thin;
+
+            @include respond-to(sm) {
+                max-height: 400px;
+            }
+
+        }
+
+        &::after {
+            transform: translate(-50%, -75%) scale(-1);
+        }
+    }
+
+
+}

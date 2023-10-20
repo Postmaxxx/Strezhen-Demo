@@ -1,0 +1,40 @@
+@use '/src/assets/css/variables' as *;
+
+
+.image_modal {
+    width: 90%;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    & > .wrapper_img {
+        //flex-grow: 1;
+        height: calc(100%);
+        width: 100%;
+
+        & > img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    & .image_modal__text {
+        height: 40px;
+        display: flex;
+        align-items:flex-end;
+        justify-content: center;
+
+        & > .image_modal__text, .image_modal__link {
+            color: #EEE;
+            @include fs_base;
+        }
+
+        & > .image_modal__link {
+            text-decoration: underline;
+        }
+    }
+
+
+}

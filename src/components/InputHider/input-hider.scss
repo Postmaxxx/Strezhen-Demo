@@ -1,0 +1,89 @@
+@use '/src/assets/css/variables' as *;
+
+
+.input-hider {
+    height: 100%;
+    width: 100%;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+
+
+	.icon_eye {
+		& .eye {
+			fill: none;
+			stroke: #F7F7F7;
+			stroke-width: 15;
+			stroke-miterlimit: 10;
+			stroke-linecap: round;
+		}
+	
+		& .pupil {
+			stroke-dasharray: 150;
+			stroke-dashoffset: 0;
+			-webkit-transform: rotate(170deg);
+			-moz-transform: rotate(170deg);
+			-o-transform: rotate(170deg);
+			-ms-transform: rotate(170deg);
+			transform: rotate(170deg);
+			-webkit-transform-origin: 50% 50%;
+			-moz-transform-origin: 50% 50%;
+			-o-transform-origin: 50% 50%;
+			-ms-transform-origin: 50% 50%;
+			transform-origin: 50% 50%;
+			animation: pupil--open .5s ease-in-out forwards;
+		}
+	
+		& .eyelid {
+			stroke-dasharray: 222;
+			stroke-dashoffset: 0;
+			animation: eyelid--open .5s ease-in-out forwards;
+		}
+	
+	}
+
+
+	&.hide {
+        & .eye {
+            animation: eyelid--close .5s ease-in-out forwards;
+        }
+    
+        & .pupil {
+            animation: pupil--close .5s ease-in-out forwards;
+        }
+    }
+}
+
+
+
+@keyframes eyelid--close {
+    from {
+        stroke-dashoffset: 0;}
+    to {
+        stroke-dashoffset: -222;
+    }
+}
+  
+@keyframes eyelid--open {
+    from {
+        stroke-dashoffset: -222;}
+    to {
+        stroke-dashoffset: -444;
+    }
+}
+  
+@keyframes pupil--close {
+    from {
+        stroke-dashoffset: 0;}
+    to {
+        stroke-dashoffset: -150;
+    }
+}
+  
+@keyframes pupil--open {
+    from {
+        stroke-dashoffset: -150;}
+    to {
+        stroke-dashoffset: -300;
+    }
+}

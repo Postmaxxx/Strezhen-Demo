@@ -1,0 +1,52 @@
+@use '/src/assets/css/variables' as *;
+
+
+.message_modal{
+    padding: 40px;
+    padding-top: 30px;
+    z-index: 6000;
+    background-color: var(--main);
+    border-radius: 15px;
+    margin: 30px;
+    max-width: min(850px, 80%);
+
+    @include respond-to(xs) {
+        max-width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    & h3 {
+        color: var(--text);
+    }
+
+    & .message_modal__text {
+        border-radius: 10px;
+        margin-top: 30px;
+        padding: 20px;
+        background-color: var(--inputs-bg);
+        max-height: 70vh;
+        overflow-y: auto;
+
+        & > p {
+            color: $dark;
+            text-indent: 0rem;
+            margin-top: 0;
+            font-weight: 600;
+        }
+    }
+
+    & .message_modal__buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 40px;
+    }
+
+
+    &.error {
+        & > h3 {
+            color: var(--error);
+        }
+    }
+}

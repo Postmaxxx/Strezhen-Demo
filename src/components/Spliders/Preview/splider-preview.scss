@@ -1,0 +1,239 @@
+@use "/src/assets/css/variables" as *;
+
+
+.splider_preview {
+    //height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+
+
+    
+    & #spliderMain {
+        width: 100%;
+        height: calc(100%);
+        position: relative;
+        height: 80%;
+        cursor: zoom-in;
+
+        &:hover .splide__track .splide__slide img {
+            scale: 1.1;
+        }
+
+        @include respond-to(sm) {
+            width: 100%;
+        }
+
+        & .splide__arrows { 
+            width: 100%;
+            height: 100%;
+            position: absolute;
+
+            @include respond-to(sm) {
+                display: none;
+            }
+
+            & .splide__arrow {
+                display: none;
+
+                background-color: transparent;
+                transition: $transition_base;
+                //height: 100%;
+                border-radius: 0;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                bottom: 5px;
+                top: auto;
+
+                &:disabled {
+                    width: 0;
+                }
+                
+                & > svg {
+                    width: 50px;
+                    height: auto;
+                    fill: var(--main);//map.get($dark, "arrow_splide");
+                    transition: $transition_base;
+                }
+
+                &:hover {
+                    & svg {
+                        fill: var(--main_em);//map.get($dark, "nav_selected");
+                    }
+                }
+
+                &--prev:hover {
+                    & svg {
+                        translate: -10px;
+                    }
+                }
+
+                &--next:hover {
+                    & svg {
+                        translate: 10px;
+                    }
+                }
+            }
+        }
+
+
+        & .splide__track {
+            height: 100%;
+
+            & .splide__slide {
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                border-radius: 5px;
+                overflow: hidden;
+                min-height: 300px;
+
+                & img {
+                    /*max-height: 100%;
+                    width: 100%;
+                    object-fit: contain; */
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    transition: scale $transition_fast;
+                }
+            }
+        }
+        
+
+    }
+
+
+    & #spliderThumbs {
+        width: 100%;
+        height: 100%;
+        //padding-top: 5%;
+        //overflow-y: hidden;
+        //max-height: 100%;
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        margin-top: 50px;
+
+
+        @include respond-to(sm) {
+            margin-top: 50px;
+            width: 100%;
+        }
+
+       
+        & .splide__arrows { 
+            width: 100%;
+            //height: auto;
+            position: absolute;
+            top:-25px;
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 50%;
+                width: 20%;
+                height: 1px;
+                background-color: var(--main_em);
+                transform: translate(-50%, -50%);
+    
+                @include respond-to(sm) {
+                    //display: none;
+                }
+            }
+
+            /*@include respond-to(sm) {
+                //display: none;
+                height: auto;
+
+                top: -25px;
+            }*/
+
+            & .splide__arrow {
+                background-color: transparent;
+                transition: $transition_base;
+                //height: 100%;
+                border-radius: 0;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                //bottom: 5px;
+                //top: auto;
+
+                &:disabled {
+                    width: 0;
+                }
+                
+                & > svg {
+                    width: 50px;
+                    height: auto;
+                    fill: var(--main);//map.get($dark, "arrow_splide");
+                    transition: $transition_base;
+                }
+
+                &:hover {
+                    & svg {
+                        fill: var(--main_em);//map.get($dark, "nav_selected");
+                    }
+                }
+
+                &--prev:hover {
+                    & svg {
+                        translate: -10px 0px;
+                    }
+                }
+
+                &--next:hover {
+                    & svg {
+                        translate: 10px 0px;
+                    }
+                }
+            }
+        }
+
+        .splide__track {
+            cursor: grab;
+            width: 100%;
+
+            & .splide__slide {
+                //opacity: 0.4;
+                filter: brightness(.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: auto !important;
+                position: relative;
+                overflow: hidden;
+                border-radius: 5px;
+                
+                
+                &.is-active {
+                    //opacity: 1;
+                    filter: brightness(1);
+                    border: none;
+                    border: 3px solid var(--main_em);
+                    border-radius: 5px;
+                }
+                
+                & img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover; 
+                    /*width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: 50% 50%;*/
+                    transition: scale $transition_fast;
+
+                    &:hover {
+                        scale: 1.2;
+                    }
+                }
+            }
+        }
+       
+        
+
+    }
+
+}
+

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://devback.net:5000">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0771b8" />
+    <link rel="manifest" crossorigin="use-credentials" href="./manifest.json"/>
+    <link rel="icon" href="./icon-192x192.png" type="image/x-icon">
+    <meta name="author" content="Maksim Postnikov">
+    <meta name="theme-color" content="#0771b8">
+    <link rel="apple-touch-icon" href="./icon-192x192.png">
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+    <link rel="preload" href="../assets/fonts/Nunito-Regular-subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/Nunito-Medium-subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/Nunito-SemiBold-subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/Nunito-Bold-subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/Nunito-ExtraBold-subset.woff2" as="font" type="font/woff2" crossorigin>
+    <meta
+      name="description"
+      content="3D печать в иркутске по доступным ценам"
+    />
+    <title>Strezhen</title>
+    <style>
+      .preloader-site { 
+          height: 50vh; 
+          width: 100vw; 	
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          flex-direction: column;
+      }
+
+      .preloader-site__text {
+          font-size: 7vw;
+          font-weight: 600;
+          color: rgba(3,127,255,.2);
+          display: none;
+      }
+      
+      .cssload-loader-walk {
+          position: relative;
+          width: 20vw;
+          height: 3vw;
+      }
+      .cssload-loader-walk > div {
+          content: "";
+          width: 3vw;
+          height: 3vw;
+          background: rgba(3,127,255,.2);
+          border-radius: 100%;
+          position: absolute;
+          top: 30px;
+          animation: cssload 2.3s linear infinite;
+      }
+      .cssload-loader-walk > div:nth-of-type(1) {
+          animation-delay: -0.46s;
+      }
+      .cssload-loader-walk > div:nth-of-type(2) {
+          animation-delay: -0.92s;
+      }
+      .cssload-loader-walk > div:nth-of-type(3) {
+          animation-delay: -1.38s;
+      }
+      .cssload-loader-walk > div:nth-of-type(4) {
+          animation-delay: -1.84s;
+      }
+
+      @keyframes cssload {
+          0% {
+              left: 15vw;
+              top: 0;
+          }
+          80% {
+              left: 0;
+              top: 0;
+          }
+          85% {
+              left: 0;
+              top: -3vw;
+              width: 3vw;
+              height: 3vw;
+          }
+          90% {
+              width: 7vw;
+              height: 2.5vw;
+          }
+          95% {
+              left: 15vw;
+              top: -3vw;
+              width: 3vw;
+              height: 3vw;
+          }
+          100% {
+              left: 15vw;
+              top: 0;
+          }
+      }
+  </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="modal"></div>
+    <div id="root">
+      <div class="preloader-site">
+        <p class="preloader-site__text">Loading ...</p>
+        <div class="cssload-loader-walk">
+            <div></div><div></div><div></div><div></div><div></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

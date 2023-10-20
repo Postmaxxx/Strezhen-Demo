@@ -1,0 +1,55 @@
+@use '/src/assets/css/variables' as *;
+
+.page_catalog {
+
+    & .container {
+
+    
+        & > h2 {
+            text-align: center;
+            margin-top: 140px;
+            color: var(--main_em);
+            margin-left: 150px;
+
+            @include respond-to(sm) {
+                margin-top: 90px;
+                margin-left: 0;
+            }
+        }
+
+        .catalog {
+            margin-top: 120px;
+            margin-bottom: 70px;
+            
+            .catalog__content {
+                margin-top: 40px;
+                height: 800px;
+                display: flex;
+                align-items: stretch;
+                width: 100%;
+                position: relative;
+            
+           
+                @include respond-to(md) {
+                    height: 650px;
+                }
+            
+                @include respond-to(sm) {
+                    margin-top: 40px;
+                    height: auto;
+                    flex-direction: column;
+                }
+        
+        
+            }
+        }
+    
+    
+    
+    
+    
+    }
+
+
+}
+    

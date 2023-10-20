@@ -1,0 +1,37 @@
+@use '/src/assets/css/variables' as *;
+
+header {
+    width: 100%;
+    height: $header_height;
+    background-color: var(--main);
+    transition: background-color $transition-theme;
+    position: sticky;
+    top: 0;
+    z-index: 5000;
+    border-bottom: 2px solid var(--main_em);
+    & * {
+        -webkit-user-drag: none !important;
+        user-select: none !important;  
+    }
+    
+    & .header__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        background-color: var(--main);
+        transition: $transition_theme;
+
+
+        & .header__link {
+            height: 100%;
+            display: flex;
+            align-items: center;
+    
+            & > img {
+                height: 90%;
+            }
+        }
+    }
+
+}

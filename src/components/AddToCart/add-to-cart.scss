@@ -1,0 +1,35 @@
+@use "/src/assets/css/variables" as *;
+
+
+
+.cart-adder {
+
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    align-items: center;
+    @include respond-to(md) {
+        flex-wrap: wrap;
+    }
+
+    & > span {
+        font-weight: 700;
+    }
+
+
+    & .amount-changer-wrapper {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    & .button_add-cart {
+        @include respond-to(xs) {
+            margin-top: 30px;
+            width: 100%;
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+    }
+    
+
+}

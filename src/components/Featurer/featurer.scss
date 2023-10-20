@@ -1,0 +1,78 @@
+@use '/src/assets/css/variables' as *;
+
+
+
+.features {
+
+    & .features__list {
+
+        & .block_feature {
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
+            gap: 20px 40px;
+            position: relative;
+            align-items: stretch;
+
+            
+            @include respond-to(md) {
+                gap: 20px 20px;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+
+
+            }
+
+            @include respond-to(sm) {
+                .input__wrapper:nth-of-type(1) {
+                    grid-column: 1 / -1;
+                }
+
+                .input__wrapper:nth-of-type(2) {
+                    grid-column: 1 / 3;
+                }
+            }
+
+            & > .block_input {
+                display: flex;
+                flex-direction: column;
+
+                & > textarea {
+                    flex-grow: 1;
+                    min-height: 2.1rem;
+                    height: 2.1rem;
+                }
+            }
+
+            
+
+
+            & .button_feature_delete {
+                margin-top: 0;
+                padding-left: 10px;
+                padding-right: 10px;
+                align-self: self-end;
+                justify-self: end;
+
+            }
+        }
+
+    }
+    & .button_feature_add {
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-top:  30px;
+        margin-right: auto;
+        margin-left: auto;
+        font-weight: 800;
+        @include fs_bigger;
+
+        @include respond-to(xs) {
+            //width: 100%;
+            display: grid;
+            place-items: center;
+        }
+    }
+
+}

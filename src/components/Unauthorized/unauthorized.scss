@@ -1,0 +1,16 @@
+@use '/src/assets/css/variables' as *;
+
+
+.unauthorized__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg);
+    flex-grow: 1;
+    
+    & > span {
+        font-size: 22px;
+        font-weight: 600;
+        color: var(--main_em);
+    }
+}

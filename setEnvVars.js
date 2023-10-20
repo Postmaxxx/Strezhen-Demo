@@ -1,0 +1,1 @@
+process.env.REACT_BACK_URL = 'host'

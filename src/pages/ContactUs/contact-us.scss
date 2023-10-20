@@ -1,0 +1,121 @@
+@use '/src/assets/css/variables' as *;
+
+.page_contact {
+    background-color: var(--bg);
+    transition: background-color $transition-theme;
+    flex-grow: 1;
+
+    .contacts {
+        margin-top: 30px;
+        display: flex;
+        align-self: stretch;
+        justify-content: space-between;
+
+        .contacts__list {
+            display: flex;
+            flex-direction: column;
+            
+            .contact {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                margin-top: 25px;
+
+                @include respond-to(md) {
+                    margin-top: 20px;
+                }
+
+                @include respond-to(xs) {
+                    margin-top: 12px;
+                }
+
+                &:first-child {
+                    margin-top: 0;
+                }
+        
+                & > .img-container {
+                    overflow: hidden;
+                    width: 30px;
+                    height: 30px;
+
+                    @include respond-to(md) {
+                        width: 25px;
+                        height: 25px;
+                    }
+
+                    @include respond-to(xs) {
+                        width: 15px;
+                        height: 15px;
+                    }
+        
+        
+                    & img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+
+                & > a {
+                    @include fs_base;
+                }
+            }
+        }
+
+        .location {
+            display: flex;
+            flex-direction: column;
+            width: 45%;
+
+            @include respond-to(xs) {
+                width: 40%;
+            }
+
+            & > img {
+                width: 100%;
+                border-radius: $brad_lg;
+                cursor: pointer;
+            }
+
+            & > a {
+                @include fs_base;
+                //text-decoration: underline;
+                margin-top: 15px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                line-height: 200%;
+
+                @include respond-to(xs) {
+                    margin-top: 10px;
+                }
+
+                & .icon_route_2 {
+                    width: 30px;
+                    height: 30px;
+                    margin-left: 10px;
+
+                    @include respond-to(sm) {
+                        width: 25px;
+                        height: 25px;
+                    }
+
+                    @include respond-to(xs) {
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+
+                @include respond-to(xs) {
+                    margin-top: 8px;
+                }
+            }
+        }
+
+    }
+
+
+    .files-adder {
+        margin-top: 0;
+    }
+}    
+

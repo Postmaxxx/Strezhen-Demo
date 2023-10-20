@@ -1,0 +1,60 @@
+@use '/src/assets/css/variables' as *;
+
+
+.modal-window {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 6000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    transition: $transition_nav;
+    background-color: rgba(#222, 0.95);
+    opacity: 0;
+
+    & > .closer {
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        right: 30px;
+        top: 30px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        stroke: #979797;
+        transition: $transition_fast;
+
+        &:hover {
+            stroke: var(--main)
+        }
+    }
+
+    & .modal__content {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: scale(0);
+        transition: $transition_nav;
+        
+    }
+
+
+    &_absence {
+        position: fixed;
+    }
+
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+
+        & > .modal__content {
+            transform: none;
+        }
+    }
+}

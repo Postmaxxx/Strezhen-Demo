@@ -1,0 +1,141 @@
+@use "/src/assets/css/variables" as *;
+
+
+.splider_catalog {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    
+    & > .splider_single {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        flex-grow: 1;
+        max-height: 90%;
+
+        @include respond-to(sm) {
+            max-height: none;
+        }
+
+        & * {
+            transition: none;
+        }
+        
+        & .splide__arrows { 
+            width: 100%;
+            position: absolute;
+            top: calc(100% + 20px);
+            height: fit-content;
+
+            @include respond-to(sm) {
+                top: calc(100% - 4px );
+                transform: translateY(-50%);
+            }
+
+            @include respond-to(xs) {
+                display: none;
+            }
+
+            & .splide__arrow {
+                background-color: transparent;
+                transition: $transition_base;
+                border-radius: 0;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                transform: translate(0, 0);
+                height: 30px;
+                aspect-ratio: 1;
+
+                @include respond-to(sm) {
+                    width: 17px;
+                }
+
+                &:disabled {
+                    width: 0;
+                }
+                
+                & > svg {
+                    height: 100%;
+                    width: 100%;
+                    fill: var(--main_em);
+                    transition: $transition_base;
+
+
+                    @include respond-to(xs) {
+                        display: none;
+                    }
+
+                }
+                &:hover {
+                    & svg {
+                        fill: var(--main_em);
+                    }
+                }
+ 
+
+                &--prev:hover {
+                    & svg {
+                        translate: -10px;
+                    }
+                }
+                &--next:hover {
+                    & svg {
+                        translate: 10px;
+                    }
+                }
+            }
+        }
+
+
+        & .splide__track {
+            height: 100%;
+            & > ul {
+                width: 100%;
+                
+                &  > li {
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;                   
+                }
+            }
+        }
+
+
+        & .splide__pagination--custom {
+            bottom: unset;
+            margin-top: 20px;
+
+            @include respond-to(sm) {
+                margin-top: 0;
+                //display: none;
+            }
+
+            & .splide__pagination__page  {
+                background-color: transparent;
+                margin: 0px 12px;
+                height: auto;
+                width: auto;
+                color: var(--main_em);
+                font-weight: 700;
+                @include fs_smaller;
+
+                @include respond-to(xs) {
+                    width: 15px;
+                    height: 15px;
+                    margin: 10px;
+                }
+
+
+                &.is-active {
+                    @include fs_bigger;
+                    opacity: 1;
+                    font-weight: 700;
+                    transform: none;
+                    color: var(--lang-text_add);
+                }
+            }
+        }
+    }
+}
+    

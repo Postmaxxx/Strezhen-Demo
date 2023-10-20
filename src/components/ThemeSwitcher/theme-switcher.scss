@@ -1,0 +1,232 @@
+@use "sass:map";
+@use "/src/assets/css/variables" as *;
+$starsblinkingduration: ('0': '0.9', "1": "1.2", "2": "1.4", "3": "1.6", "4": "1.8", "5": "2.1");
+$clouds: (
+  (index: 0, width: 30px, gap: 15px, top: 0%, speed: 7s, opacity: 1),
+  (index: 1, width: 25px, gap: 20px, top: 25%, speed: 4s, opacity: 0.85),
+  (index: 2, width: 20px, gap: 20px, top: 40%, speed: 5s, opacity: 0.7)
+);
+$width: 70px;
+$height: 40px;
+$circleSize: 14px;
+$circlePosition: calc($width / 2 - $circleSize);
+$duration: 2000ms;
+
+.theme-switcher__container {
+    position: fixed;
+    right: 20px;
+    top: 80px;
+    width: 70px;
+    height: 40px;
+    overflow: hidden;
+    transition: background-color $transition_theme, left $nav_mobile_delay, right $nav_mobile_delay, opacity $nav_mobile_delay;
+    z-index: 5000;
+
+    & * {
+        -webkit-user-drag: none !important;
+        user-select: none !important;  
+    }
+    
+    @include respond-to(md) {
+        top: 75px;
+        transform: scale(0.85);
+    }
+
+    @include respond-to(sm) {
+        z-index: 5500;
+        transform: scale(0.70);
+        position: relative;
+        left: initial;
+        right: initial;
+        top: initial;
+
+    }
+    
+    @include respond-to(xs) {
+        transform: scale(0.6);
+    }
+
+    &.scrolled {
+        right: -70px;
+
+        @include respond-to(sm) {
+            right: initial;
+        }
+    }
+
+
+
+
+
+    & input {
+        cursor: pointer;
+        visibility: visible;
+        opacity: 0;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 5000;
+    }
+
+
+
+
+    
+    & .theme-switcher {
+        width: 100%;
+        height: 100%;
+
+        & > .content-switcher {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            width: $width;
+            height: $height;
+            border-radius: calc($height / 2);
+
+            & > div {
+                position: absolute;
+				height: 100%;
+				width: 100%;
+
+                &.light {
+				    background-color: rgb(100 181 245);
+                    clip-path: circle($circleSize at $circlePosition 50%);
+                    transition: calc($duration / 4) cubic-bezier(0,1,0,1);
+                }
+
+                &.dark {
+				    background-color: #002E6E;
+                    transition: calc($duration / 4) cubic-bezier(0,1,0,1);
+                    & img {
+                        position: absolute;
+                        aspect-ratio: 1;
+                    }
+        
+                }
+            }
+
+
+            &.theme_light_1 .light {
+                transition: calc($duration / 4) cubic-bezier(1,0,1,0);
+                clip-path: circle(calc($width * 10) at calc($circlePosition - calc($width * 10) + $circleSize) 50%);
+            }
+
+
+            &.theme_light_2 {
+                .light {
+                    transition: calc($duration / 4) cubic-bezier(1,0,1,0);
+                    clip-path: circle(calc($width * 10) at calc($circlePosition - calc($width * 10) + $circleSize) 50%);
+                }
+    
+                .dark {
+                    transition: calc($duration / 4) cubic-bezier(1,0,1,0);
+                    clip-path: circle(calc($width * 10) at calc($circlePosition + calc($width * 10) + $circleSize) 50%);
+                }
+            }
+
+
+            &.theme_light {
+                .light {
+                    z-index: 900;
+                    transition: calc($duration / 4) cubic-bezier(0,1,0,1);
+                    clip-path: circle(calc($width * 10) at calc($circleSize - calc($width * 9)) 50%);
+                }
+    
+                .dark {
+                    z-index: 1000;
+                    transition: calc($duration / 4) cubic-bezier(0,1,0,1);
+                    clip-path: circle(calc($circleSize) at calc($circlePosition + calc($circleSize * 2)) 50%);
+                }
+            }
+
+            &.theme_light_back_1 {
+                .light {
+                    transition: 0ms;
+                    z-index: 900;
+                    clip-path: circle(calc($width * 10) at calc($circleSize - calc($width * 9)) 50%);
+                }
+    
+                .dark {
+                    transition: calc($duration / 4) cubic-bezier(1,0,1,0);
+                    z-index: 1000;
+                    clip-path: circle(calc($width * 10) at calc($circlePosition + $circleSize + calc($width * 10)) 50%);
+                }
+            }
+
+            
+            &.theme_light_back_2 {
+                .light {
+                    transition: 0ms;
+                    z-index: 1000;
+                    clip-path: circle(calc($width * 10) at calc($circlePosition + $circleSize - calc($width * 10)) 50%);
+                }
+    
+                .dark {
+                    transition: 0ms;
+                    z-index: 900;
+                    clip-path: circle(calc($width * 10) at calc($circlePosition + $circleSize + calc($width * 10)) 50%);
+                }
+            }
+
+            & .light > div {
+				display: inline-block;
+				height: auto;
+				position: absolute;
+				left: 0;
+            }
+
+
+
+            
+            @each $index, $value in $starsblinkingduration {
+                .dark .theme_dark__star-#{$index} {
+                    animation: star-blink #{$value}s linear infinite;
+                }
+            }
+
+            @keyframes star-blink {
+                0% { opacity: .2 }
+                50% { opacity: .8 }
+                100% { opacity: .2 }
+            }
+
+            @each $cloud in $clouds {
+                .light .clouds-#{map-get($cloud, index)} {
+                    width: calc(#{map-get($cloud, width)} * 6 + calc(#{map-get($cloud, gap)} * 5));
+                    top: #{map-get($cloud, top)};
+                    animation: theme-clouds-#{map-get($cloud, index)} linear infinite;
+                    animation-duration: #{map-get($cloud, speed)};
+
+                    .cloud {
+                        width:#{map-get($cloud, width)};
+                        margin-right: #{map-get($cloud, gap)};
+                        opacity: #{map-get($cloud, opacity)};
+                    }
+                }
+
+                @keyframes theme-clouds-#{map-get($cloud, index)} {
+                    0% { 
+                        transform: translateX(0); 
+                    }
+                    100% { 
+                        transform: translateX(calc(-#{map-get($cloud, width)} - #{map-get($cloud, gap)})) rotate(0.01deg);
+                    }
+                }
+            }
+
+        }
+ 
+    }
+
+
+    &:focus {
+        right: 20px !important;
+    }
+
+
+}
+

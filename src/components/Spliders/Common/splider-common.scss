@@ -1,0 +1,95 @@
+@use '/src/assets/css/variables' as *;
+
+
+.splider_common__wrapper {
+    height: 100%;
+    
+    .splide {
+        height: 100%;
+        
+        & .splide__track {
+            height: 100%;
+    
+            & > .splide__list {
+                
+                &  > .splide__slide {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position: relative;
+    
+                    & .splide__slide-content {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 5px;
+                        overflow: hidden;
+                        position: relative;
+
+                        
+                        & > img {
+                            cursor: zoom-in;
+                            height: 100%;
+                            width: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+
+        & > .splide__pagination   {
+            position: absolute;
+            bottom: -8%;
+            opacity: .8;
+            & li > button {
+                background-color: var(--main_em);
+                &.is-active {
+                    opacity: 1;
+                    scale: 1.2;
+                }
+            }
+        }
+    
+        & > .splide__arrows {
+
+            @include respond-to(xs) {
+                display: none;
+            }
+    
+            & > .splide__arrow {
+                transition: $transition_fast;
+                
+                & > svg {
+                    fill: $dark;
+                    transition: margin $transition_fast;
+                }
+                
+                &:hover {
+                    opacity: .8;
+                    background-color: var(--main);
+                    box-shadow: 0 0 10px 0 var(--main);;
+                    
+                    & > svg {
+                        fill: var(--text);
+                    }
+                }
+    
+                &--next:hover {
+                    //translate: 5px;
+                    & > svg {
+                        margin-left: 8px;
+                    }
+                }
+    
+                &--prev:hover {
+                    //translate: -5px;
+                    & > svg {
+                        margin-right: 8px;
+                    }
+                }
+            }
+
+
+        }
+    }
+}

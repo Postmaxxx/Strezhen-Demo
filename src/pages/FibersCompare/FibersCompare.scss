@@ -1,0 +1,438 @@
+@use '/src/assets/css/variables' as *;
+
+.page_compare {
+    
+    .fibers-compare {
+        padding: 30px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include respond-to(sm) {
+            padding: 20px;
+        }
+    
+        @include respond-to(xs) {
+            padding: 10px;
+        }
+
+    
+        & .table__container {
+            margin-top: 50px;
+            width: fit-content;
+            max-width: 100%;
+            position: relative;
+            min-height: 500px;
+
+
+            & .table {
+                overflow: auto;
+                display: grid;
+                grid-auto-flow: column;
+                grid-template-rows: auto repeat(23, auto);
+                grid-template-columns: 1fr repeat(auto-fit, 1fr);
+                @include scroll_thin;
+
+
+
+                .cell {
+                    position: relative;
+                    height: 100%;
+                    padding: 12px;
+                    border-right: 1px solid var(--border_compare);
+                    border-bottom: 1px solid var(--border_compare);
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    background-color: var(--bg);
+                    transition: background-color $transition-theme, border $transition_theme;
+
+                    @include respond-to(sm) {
+                        padding: 9px;
+                    }
+
+                    @include respond-to(xs) {
+                        padding: 7px;
+                    }
+
+
+                    & .button_blue {
+                        font-size: 0.9rem;
+                        padding: 5px 10px;
+                        margin-left: auto;
+                        margin-right: auto;
+
+                        @include respond-to(sm) {
+                            padding-left: 7px;
+                            padding-right: 7px;
+                            font-size: .75rem;
+                        }
+
+                        @include respond-to(xs) {
+                            padding-left: 5px;
+                            padding-right: 5px;
+                            font-size: .6rem;
+                            font-weight: 400;
+                        }
+                    }
+
+                    & > .values_numeric {
+                        color: var(--text);
+                        font-weight: 600;
+                        @include fs_smaller;
+
+
+                        & > span {
+                            font-size: .8em;
+                            color: var(--text_mild);
+
+                            @include respond-to(xs) {
+                                font-weight: 400;
+                            }
+                        }
+                    }
+
+
+                    /*&.with-tip {
+                        .tip {
+                            height: 17px;
+                            width: 17px;
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            background-color: var(--border_compare);
+                            transition: background-color $transition_theme, transform $transition_fast;
+
+                            @include respond-to(sm) {
+                                height: 15px;
+                                width: 15px;
+                            }
+    
+                            @include respond-to(xs) {
+                                display: none;
+                            }
+
+                            & > svg {
+                                padding: 4px;
+                                height: 100%;
+                                width: 100%;
+                            }
+
+                            &:hover {
+                                &::after {
+                                    content: attr(tip-text);
+                                    position: absolute;
+                                    top: 100%;
+                                    padding: 0 5px;
+                                    border: 1px solid white;
+                                    border-radius: 5px;
+                                    background-color: var(--main);
+                                    width: 300px;
+                                    font-size: 14px;
+                                    max-width: calc(100vw );
+                                }
+                            }
+                        }
+                    }*/
+
+
+                    & .rating__container {
+                        width: 90%;
+                    }
+
+                    
+                    
+                    &.selected {
+                        background-color: var(--compare_selected);
+                    }
+
+
+                    &.cell_checkbox {
+                        padding: 0;
+
+
+                        & label {
+                            cursor: pointer;
+                            height: 100%;
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            
+                            & input {
+                                cursor: pointer;
+                                width: 0;
+                                height: 0;
+                                position: absolute;
+                            }
+
+                            & span {
+                                height: 15px;
+                                width: 15px;
+                                background-color: transparent;
+                                position: relative;
+                                transition: background-color $transition_fast ease-in-out;
+                                      
+                                
+                                &::before, &::after {
+                                    content: '';
+                                    position: absolute;
+                                    transition: border $transition_fast ease-in-out, background-color $transition_fast ease-in-out, transform $transition_fast ease-in-out;
+                                    top: 50%;
+                                    left: 50%;
+                                    display: block;
+                                }
+
+                                &::before {
+                                    height: 100%;
+                                    width: 100%;
+                                    border: 1px solid var(--rating_border_inner);
+                                    transform: translate(-50%, -50%);
+                                    background-color: transparent;
+                                }
+
+                                &::after {
+                                    height: 25%;
+                                    width: 70%;
+                                    border-left: 3px solid transparent;
+                                    border-bottom: 3px solid transparent;
+                                    transform: translate(-50%, -65%) rotate(-45deg);
+                                }
+                            }
+
+                            & input:checked ~ span {
+                                
+                                &::before {
+                                    background-color: var(--main);
+                                    transform: translate(-50%, -50%) rotate(90deg);
+                                }
+
+                                &::after {
+                                    border-color: var(--compare_mark);
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover {
+                          background-color: var(--compare_selected);
+
+                    }
+
+                    & .rating_money {
+                        height: 20px;
+
+                        @include respond-to(sm) {
+                            height: 16px;
+                        }
+
+                        @include respond-to(sm) {
+                            height: 13px;
+                        }
+
+                    }
+                }
+
+                .fixed-left {
+                    position: sticky;
+                    left: 0;
+                    z-index: 2;
+                    
+                    & button:not(.button_blue) {
+                        align-items: center;
+                        display: flex;
+                        height: 100%;
+                        width: 100%;
+                        background-color: transparent;
+                        border: none;
+
+                        & span {
+                            text-align: left;
+                            font-weight: 600;
+                            @include fs_smaller;
+                        }
+                    }
+
+                }
+
+                .padding_no {
+                    padding: 0;
+
+                    & > a {
+                        @include respond-to(sm) {
+                            padding: 5px;
+                            padding-right: 20px;
+                        }
+
+                        @include respond-to(xs) {
+                            padding: 5px;
+                            padding-right: 10px;
+                        }
+                    }
+                }
+
+
+                .row-name {
+                    padding: 0;
+                    padding-right: 15px;
+                    width: 100%;
+
+                    @include respond-to(sm) {
+                        padding-right: 12px;
+                    }
+
+                    @include respond-to(xs) {
+                        padding-right: 9px;
+                    }
+                    
+                    & > .button_compare, .button_reset {
+                        margin-top: 15px;
+                        margin-bottom: 15px;
+
+                        @include respond-to(xs) {
+                            margin-top: 7px;
+                            margin-bottom: 7px;
+                        }
+                    }
+
+                    & > a {
+                        display: flex;
+                        height: 100%;
+                        width: 100%; 
+                        align-items: center;
+                    }
+
+
+                    &_last {
+                        border-bottom: none;
+                    }
+                }
+
+
+                .col-name {
+                    justify-content: space-between;
+                    width: 130px;
+
+                    @include respond-to(md) {
+                        width: 120px;
+                    }
+
+                    @include respond-to(sm) {
+                        width: 100px;
+                    }
+
+                    @include respond-to(xs) {
+                        width: 80px;
+                    }
+
+                    & > .img-cont {
+                        width: 100%;
+                        height: 80px;
+                        overflow: hidden;
+                        border-radius: $brad_sm;
+
+                        @include respond-to(sm) {
+                            height: 50px;
+                        }
+                        
+                        & > img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                        
+                    }
+
+                    & .fiber-name {
+                        color: var(--text);
+                        font-weight: 600;
+                        font-size: .9rem;
+                        margin-top: 5px;
+    
+    
+                        @include respond-to(xs) {
+                            font-weight: 600;
+                            font-size: 0.8rem;
+                            margin-top: 3px;
+                        }
+                    }
+
+                    &_last {
+                        border-bottom: none;
+
+                        & > span {
+                            color: var(--main_em);
+                            font-weight: 600;
+                        }
+                    }
+
+                    & .button_sort {
+                        margin-top: 20px;
+
+                        @include respond-to(sm) {
+                            margin-top: 15px;
+                        }
+
+                        @include respond-to(xs) {
+                            margin-top: 12px;
+                        }
+                    }
+                }
+
+
+                & .selectors {
+                    flex-wrap: nowrap;
+                    flex-direction: row;
+                    gap: 10px;
+                    padding-right: 5px;
+
+                    @include respond-to(sm) {
+                        flex-direction: column;
+                        gap: 0;
+                    }
+
+                    & button {
+                        white-space: nowrap;
+                    }
+
+                    & .error-message {
+                        align-self: center;
+                        font-size: 0.85rem;
+                        color: var(--error);
+                        text-align: center;
+                        margin-right: 10px;
+
+                        @include respond-to(sm) {
+                            font-size: 0.8rem;
+                            margin-right: 0;
+                            margin-bottom: 10px;
+                        }
+
+                        @include respond-to(sm) {
+                            font-size: 0.7rem;
+                        }
+
+                    }   
+                }
+
+
+
+                .svg {
+                    width: 17px;
+
+                    @include respond-to(sm) {
+                        width: 14px;
+                    }
+
+                    @include respond-to(xs) {
+                        width: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+

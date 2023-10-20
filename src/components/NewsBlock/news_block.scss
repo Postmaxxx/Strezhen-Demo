@@ -1,0 +1,60 @@
+@use '/src/assets/css/variables' as *;
+
+section.news {
+    width: 100%;
+    //border: 1px solid red;
+    //padding-top: 20px;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: stretch;    
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    min-height: 300px;
+    
+    @include respond-to(xs) {
+        width: 100%;
+    }
+
+    & > h2 {
+        width: 100%;
+        margin-bottom: 50px;
+
+        @include respond-to(sm) {
+            margin-bottom: 40px;
+        }
+
+        @include respond-to(xs) {
+            margin-bottom: 30px;
+        }
+    }
+
+    & > .no-news {
+        @include fs_bigger;
+    }
+
+    & >  .break-new-line {
+        width: 100%;
+    }
+
+    & .show-more-news {
+        margin-top: 30px;
+
+        @include respond-to(xs) {
+            padding: 6px 20px;
+        }
+        
+        & span {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 18px;
+            margin: 0 30px;
+        }
+
+        & svg {
+            fill: var(--text);
+            height: 20px;
+        }
+
+    }
+}

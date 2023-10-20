@@ -1,0 +1,66 @@
+@use '/src/assets/css/variables' as *;
+
+.page_home {
+    background-color: var(--bg);
+    transition: background-color $transition-theme;
+    flex-grow: 1;
+
+    & section.intro {
+        & > p:first-of-type {
+            @include margin_first_p;
+        }
+    }
+
+
+    & .intro {
+
+        & h2 {
+            margin-top: 4rem;
+        }
+        
+        & h4 {
+            margin-top: 3rem;
+            text-align: center;
+            @include fs_bigger;
+        }
+
+        & p {
+            margin-top: 1rem; 
+
+            &:first-of-type {
+                margin-top: 2.5rem;
+            }
+        }
+    }
+
+    & .slider__container {
+        margin-top: 90px;
+        height: 400px;
+        position: relative;
+        -webkit-user-drag: none;
+        user-select: none;
+
+        @include respond-to(md) {
+            height: 320px;
+        }
+
+        @include respond-to(sm) {
+            margin-top: 40px;
+            height: 250px;
+        }
+
+        @include respond-to(xs) {
+            height: 170px;
+        }
+
+    }
+
+
+    & .news {
+        margin-top: 100px;
+
+        @include respond-to(xs) {
+            margin-top: 80px;
+        }
+    }
+}

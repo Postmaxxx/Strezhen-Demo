@@ -1,0 +1,208 @@
+@use '/src/assets/css/variables' as *;
+
+
+.files-adder{
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: $brad_md;
+    background-color: var(--main_em);
+    transition: background-color $transition_theme;
+    padding: 30px 20px;
+
+    @include respond-to(xs) {
+        padding: 30px 10px;
+    }
+
+    & .files-adder__arrow {
+        fill: var(--text_reverse);
+        margin-bottom: 10px;
+        transition: fill $transition-theme;
+
+        @include respond-to(xs) {
+            scale: 0.7;
+            margin-bottom: 0px;
+        }
+    }
+
+    & > .files-adder__label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        @include respond-to(md) {
+            flex-direction: column;
+        }
+
+        & label {
+            color: var(--text_reverse);
+            display: inline;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            
+            @include respond-to(sm) {
+                font-size: 1rem;
+            }
+
+            @include respond-to(xs) {
+                font-size: .8rem;
+            }
+        }
+
+        & span {
+            color: var(--text_reverse);
+            font-weight: 400;
+            text-align: center;
+            font-size: 1rem;
+
+            @include respond-to(sm) {
+                display: none;
+            }
+        }
+
+    }
+
+    & > .files-adder__previewer {
+        padding-right: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        //padding: 0 20px;
+        gap: 20px;
+        margin-top: 20px;
+        //border: 1px solid red;
+        justify-content: center;
+        max-height: 500px;
+        overflow-y: auto;
+        scrollbar-width: none;
+        @include scroll_thin;
+
+        &:empty {
+            display: none;
+        }
+
+        & > .previewer__card{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 95px;
+            //overflow: hidden;
+            padding: 5px;
+            background-color: var(--main);
+            transition: background-color $transition-theme;
+            border-radius: $brad_md;
+            position: relative;
+
+            @include respond-to(xs) {
+                width: 65px;
+            }
+
+            & > .previewer__card__img-cont {
+                width: 100%;
+                aspect-ratio: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                //border: 1px solid var(--main_em);
+                border-radius: $brad_md;
+                overflow: hidden;
+                transition: border $transition-theme;
+                border-radius: 5px;
+
+
+                
+                & > img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+            }
+
+            & > .previewer__card__title {
+                margin-top: 10px;
+                font-size: .9rem;
+                text-align: center;
+                color: var(--text);
+                //word-break: break-all;
+                //hyphens:auto
+                word-break: break-all;
+                line-height: 100%;
+
+                @include respond-to(xs) {
+                    font-size: .7rem;
+                }
+            }
+
+
+            & > .previewer__card__remover {
+                $size: 20px;
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                transform: translate(0, 0);
+                width: $size;
+                height: $size;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                visibility: hidden;
+                opacity: 0;
+                transition: opacity $transition_fast, visibility $transition_fast;
+                background-color: transparent;
+                border-radius: 50%;
+                border: 2px solid $item_delete;
+
+                @include respond-to(xs) {
+                    top: 6px;
+                    right: 6px;
+                    height: calc($size * .8);
+                    width: calc($size * .8);
+                }
+
+                & > svg {
+                    height: 65%;
+                    width: 65%;
+                    & path {
+                        stroke: $item_delete;
+                    }
+                }
+            }
+
+            &:hover > .previewer__card__remover {
+                visibility: visible;
+                opacity: 1;
+                transition: opacity $transition_fast, visibility $transition_fast;
+
+            }
+        }
+
+    }
+
+
+    & .files-adder__cleaner {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        height: 25px;
+        width: 25px;
+    }
+    
+
+    &.active {
+        border: 2px dotted $light;
+        box-shadow: 0px 0px 20px $light;
+    }
+
+
+    & > .button_add-files {
+        display: none;
+    }
+
+}

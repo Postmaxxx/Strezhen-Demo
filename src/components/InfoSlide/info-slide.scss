@@ -1,0 +1,33 @@
+@use '/src/assets/css/variables' as *;
+
+
+.info_slide {
+    width: 100%;
+
+    & > .slide__descr {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+
+        & > p {
+            text-indent: 0;
+            margin-top: 0;
+            font-size: 18px;
+            text-align: center;
+
+        }
+    
+        & > a {
+            margin-left: 10px;
+            color: red; 
+            
+            & > svg {
+                width: 20px;
+                height: 20px;
+                stroke: var(--main_em);
+            }
+        }
+    }
+
+}
+
